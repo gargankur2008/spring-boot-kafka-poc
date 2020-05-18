@@ -1,0 +1,13 @@
+{
+  "namespace": "com.ankur.springboot.web.models",
+  "type": "record",
+  "name": "Customer",
+  "fields": [
+    {"name": "CustomerId", "type": "int"},
+    {"name": "FirstName","type": "string"},
+    {"name": "LastName","type": "string"},
+    {"name": "DOB","type": {"type" : "string", "logicalType": "DATE_TYPE"}},
+    {"name": "CustomerSince","type": {"type" : "string", "logicalType": "DATE_TYPE"}},
+    {"name": "Email","type": "string"}
+  ]
+}

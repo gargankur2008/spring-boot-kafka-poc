@@ -8,21 +8,17 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-public class DeliveryController {
+public class CustomerController {
 
     @Autowired
     private KafkaProducerService service;
-    @RequestMapping(method = RequestMethod.POST, value = "/newdelivery", consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<String> newDelivery(@RequestBody com.ankur.springboot.web.models.DeliveryAddress deliveryAddress) {
-        if(service.getMessage(deliveryAddress)){
+
+    @RequestMapping(method = RequestMethod.POST, path = "/newcustomer",consumes = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<String> newCustomer(@RequestBody com.ankur.springboot.web.models.Customer customer) {
+        if(service.getMessage(customer)) {
+            System.out.println(customer.getFirstName());
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
-    }
-
-    @ResponseBody
-    @RequestMapping(method = RequestMethod.GET, value = "/test")
-    public String test() {
-        return "Tested";
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).build();
     }
 }

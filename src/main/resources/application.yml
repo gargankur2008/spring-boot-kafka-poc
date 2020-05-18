@@ -1,0 +1,24 @@
+spring:
+  profiles:dev
+name: dev-YAML
+environment: dev
+applicationId: Kafka-Poc-Dev
+topicNameDelivery: kafka-poc-delivery
+topicNameCustomer: kafka-poc-customer
+schemaRegistryServers: http://localhost:8081
+bootstrapServers:
+  - localhost:9092
+  - localhost:9093
+
+---
+spring:
+  profiles:prod
+name: prod-YAML
+environment: prod
+applicationId: Kafka-Poc-Prod
+topicNameDelivery: kafka-poc-delivery
+topicNameCustomer: kafka-poc-customer
+schemaRegistryServers: http://localhost:8081
+bootstrapServers:
+  - localhost:9092
+  - localhost:9093

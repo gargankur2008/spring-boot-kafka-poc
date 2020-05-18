@@ -1,1 +1,1 @@
-kafka-console-consumer --bootstrap-server localhost:9092 --topic kafka-poc --from-beginning
+kafka-console-consumer --bootstrap-server localhost:9092 --topic kafka-poc-customer --from-beginning

@@ -3,6 +3,8 @@
   "type": "record",
   "name": "DeliveryAddress",
   "fields": [
+    {"name": "AddressId", "type": "int"},
+    {"name": "CustomerId", "type": "int"},
     {"name": "AddressLine","type": ["null","string"]},
     {"name": "City","type": ["null","string"]},
     {"name": "State","type": ["null","string"]},
