@@ -34,17 +34,21 @@ public class KafkaProducerService {
         return configProps;
     }
 
-    public boolean getMessage(com.ankur.springboot.web.models.DeliveryAddress deliveryAddress) {
+    public boolean sendMessage(com.ankur.springboot.web.models.DeliveryAddress deliveryAddress) {
         KafkaProducer<String, com.ankur.springboot.web.models.DeliveryAddress> kafkaProducer = new KafkaProducer<>(kafkaProducerConfig());
         // kafkaProducer.send(new ProducerRecord<>(AppConfigs.topicNameDelivery, null, deliveryAddress));
         kafkaProducer.send(new ProducerRecord<>(configs.getTopicNameDelivery(), null, deliveryAddress));
+        kafkaProducer.flush();
+        kafkaProducer.close();
         return true;
     }
 
-    public boolean getMessage(com.ankur.springboot.web.models.Customer customer) {
+    public boolean sendMessage(com.ankur.springboot.web.models.Customer customer) {
         KafkaProducer<String, com.ankur.springboot.web.models.Customer> kafkaProducer = new KafkaProducer<>(kafkaProducerConfig());
         // kafkaProducer.send(new ProducerRecord<>(AppConfigs.topicNameCustomer, null, customer));
         kafkaProducer.send(new ProducerRecord<>(configs.getTopicNameCustomer(), null, customer));
+        kafkaProducer.flush();
+        kafkaProducer.close();
         return true;
     }
 }

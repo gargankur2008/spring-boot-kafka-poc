@@ -55,7 +55,7 @@ task generateAvro(type: com.commercehub.gradle.plugin.avro.GenerateAvroJavaTask)
 	//point plugin to folder with avro schemas
 	source("src/main/resources/schema")
 	//point plugin to folder with generated POJOs
-	outputDir = file("src/main/java/avro")
+	outputDir = file("src/main/java")
 }
 
 compileJava.source(generateAvro.outputs)

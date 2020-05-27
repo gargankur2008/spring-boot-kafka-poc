@@ -9,7 +9,6 @@ schemaRegistryServers: http://localhost:8081
 bootstrapServers:
   - localhost:9092
   - localhost:9093
-
 ---
 spring:
   profiles:prod

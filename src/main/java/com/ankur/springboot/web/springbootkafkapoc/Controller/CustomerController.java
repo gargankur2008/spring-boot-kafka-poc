@@ -15,8 +15,8 @@ public class CustomerController {
 
     @RequestMapping(method = RequestMethod.POST, path = "/newcustomer",consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> newCustomer(@RequestBody com.ankur.springboot.web.models.Customer customer) {
-        if(service.getMessage(customer)) {
-            System.out.println(customer.getFirstName());
+        if(service.sendMessage(customer)) {
+            // System.out.println(customer.getFirstName());
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
         return ResponseEntity.status(HttpStatus.BAD_GATEWAY).build();

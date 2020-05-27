@@ -12,9 +12,10 @@ public class DeliveryController {
 
     @Autowired
     private KafkaProducerService service;
+
     @RequestMapping(method = RequestMethod.POST, value = "/newdelivery", consumes = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> newDelivery(@RequestBody com.ankur.springboot.web.models.DeliveryAddress deliveryAddress) {
-        if(service.getMessage(deliveryAddress)){
+        if(service.sendMessage(deliveryAddress)){
             return ResponseEntity.status(HttpStatus.CREATED).build();
         }
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
