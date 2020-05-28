@@ -3,7 +3,7 @@
   "type": "record",
   "name": "Customer",
   "fields": [
-    {"name": "CustomerId", "type": "int"},
+    {"name": "CustomerId","type": "long"},
     {"name": "FirstName","type": "string"},
     {"name": "LastName","type": "string"},
     {"name": "DOB","type": {"type" : "string", "logicalType": "DATE_TYPE"}},

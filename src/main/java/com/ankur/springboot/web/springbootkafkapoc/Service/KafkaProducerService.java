@@ -1,5 +1,6 @@
 package com.ankur.springboot.web.springbootkafkapoc.Service;
 
+import com.ankur.springboot.web.models.*;
 import com.ankur.springboot.web.springbootkafkapoc.AppConfigs;
 import io.confluent.kafka.serializers.AbstractKafkaAvroSerDeConfig;
 import io.confluent.kafka.serializers.KafkaAvroSerializer;
@@ -9,12 +10,11 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.serialization.StringSerializer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
-import org.springframework.stereotype.Component;
-
+import org.springframework.stereotype.Service;
 import java.util.HashMap;
 import java.util.Map;
 
-@Component
+@Service
 public class KafkaProducerService {
 
     @Autowired
@@ -34,7 +34,7 @@ public class KafkaProducerService {
         return configProps;
     }
 
-    public boolean sendMessage(com.ankur.springboot.web.models.DeliveryAddress deliveryAddress) {
+    public boolean sendMessage(DeliveryAddress deliveryAddress) {
         KafkaProducer<String, com.ankur.springboot.web.models.DeliveryAddress> kafkaProducer = new KafkaProducer<>(kafkaProducerConfig());
         // kafkaProducer.send(new ProducerRecord<>(AppConfigs.topicNameDelivery, null, deliveryAddress));
         kafkaProducer.send(new ProducerRecord<>(configs.getTopicNameDelivery(), null, deliveryAddress));
@@ -43,7 +43,7 @@ public class KafkaProducerService {
         return true;
     }
 
-    public boolean sendMessage(com.ankur.springboot.web.models.Customer customer) {
+    public boolean sendMessage(Customer customer) {
         KafkaProducer<String, com.ankur.springboot.web.models.Customer> kafkaProducer = new KafkaProducer<>(kafkaProducerConfig());
         // kafkaProducer.send(new ProducerRecord<>(AppConfigs.topicNameCustomer, null, customer));
         kafkaProducer.send(new ProducerRecord<>(configs.getTopicNameCustomer(), null, customer));
